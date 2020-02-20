@@ -9,13 +9,12 @@ function changeWord() {
 	document.getElementById("paragraph2").innerHTML = newparagraph2;
 }
 
-function changeWordColor() {
-	let txt = 'Jedi';
-	if (window.getSelection) {
-		txt = window.getSelection().toString();
-	} else if (document.selection) {
-		txt = document.selection.createRange().text;
+function changeWordColor(text) {
+	let word = document.getElementById("paragraph3");
+	let innerHTML = word.innerHTML;
+	let index = innerHTML.indexOf(text);
+	if (index >= 0) {
+		innerHTML = innerHTML.substring(0,index) + "<span class= 'highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+		word.innerHTML = innerHTML;
 	}
-	document.getElementById("paragraph2").innerHTML = txt;
 }
-document.getElementById("txt").onclick = txt.style.backgroundColor = "green";
